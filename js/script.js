@@ -6,47 +6,49 @@
  let redButton = document.getElementById('redButton')
  let blueButton = document.getElementById('blueButton')
  let greenButton = document.getElementById('greenButton')
+ let body = document.getElementsByTagName('body')[0]
+
+
+
 
  //transformar essas personalizações em funções
 
  botao.addEventListener('click', event => {
-     event.preventDefault()
-     let randomRed = redRandom()
-     redCircle.style.fill = randomRed
-     redButton.style.backgroundColor = randomRed
+    event.preventDefault()
+/*     let R, G, B
+    R = hexadecimal()
+    G = hexadecimal()
+    B = hexadecimal()
+    colorirRed(R)
+    colorirGreen(G)
+    colorirBlue(B)
+    colorirBody(R, G, B) */
+
+    for(let i = 1; i <= 100; i++){
+        console.log(randomNumber());
+    }
  })
+
  botaoAleatorio.addEventListener('click', event => {
      event.preventDefault()
-     let randomRed = "#" + redRandom()
-     redCircle.style.fill = randomRed
-     redButton.style.backgroundColor = randomRed
-     let randomblue = "#" + blueRandom()
-     blueCircle.style.fill = randomblue
-     blueButton.style.backgroundColor = randomblue
-     let randomgreen = "#" + greenRandom()
-     greenCircle.style.fill = randomgreen
-     greenButton.style.backgroundColor = randomgreen
+     colorirRed(hexadecimal())
+     colorirBlue(hexadecimal())
+     colorirGreen(hexadecimal())
  })
 
  redButton.addEventListener('click', event => {
      event.preventDefault()
-     let randomRed = "#" + redRandom()
-     redCircle.style.fill = randomRed
-     redButton.style.backgroundColor = randomRed
+    colorirRed(hexadecimal())
  })
 
  blueButton.addEventListener('click', event => {
     event.preventDefault()
-    let randomblue = "#" + blueRandom()
-    blueCircle.style.fill = randomblue
-    blueButton.style.backgroundColor = randomblue
+    colorirBlue(hexadecimal())
 })
 
 greenButton.addEventListener('click', event => {
     event.preventDefault()
-    let randomgreen = "#" + greenRandom()
-    greenCircle.style.fill = randomgreen
-    greenButton.style.backgroundColor = randomgreen
+    colorirGreen(hexadecimal())
 })
 
  //Hexadecimal = RR GG BB
@@ -106,15 +108,34 @@ greenButton.addEventListener('click', event => {
      return firstValue + secondValue
  }
 
- let redRandom = () => {
-     let randomHex = convertToHex(randomNumber(), randomNumber())
-     return randomHex + "0000"
- }
- let greenRandom = () => {
+ let hexadecimal = () => { //returna 2 valores hexadecimais
     let randomHex = convertToHex(randomNumber(), randomNumber())
-    return "00" + randomHex + "00"
+    return randomHex 
 }
- let blueRandom = () => {
-     let randomHex = convertToHex(randomNumber(), randomNumber())
-     return "0000" + randomHex 
- }
+
+let colorirBody = (R, G, B) => {//colore o body
+    let RGB = "#"+R+G+B
+    console.log(RGB);
+    body.style.backgroundColor = RGB
+}
+
+let colorirRed = (R) => {
+    let redHex = "#" + R + "0000"
+    redCircle.style.fill = redHex
+    redButton.style.backgroundColor = redHex
+    console.log("Red color is: " + R);
+}
+
+let colorirGreen = (G) => {
+    let greenHex = "#00" + G + "00"
+    greenCircle.style.fill = greenHex
+    greenButton.style.backgroundColor = greenHex
+    console.log("Green color is: " + G);
+}
+
+let colorirBlue = (B) => {
+    let blueHex = "#0000" + B
+    blueCircle.style.fill = blueHex
+    blueButton.style.backgroundColor = blueHex
+    console.log("Blue color is: " + B);
+}
