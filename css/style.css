@@ -139,11 +139,22 @@ body {
 
   #redButton{
     background-color: #FF0000;
+    margin-top: 3%;
   }
   #blueButton{
     background-color: #0000FF;
+    margin-top: 3%;
   }
   #greenButton{
     background-color: #00FF00;
+    margin-top: 3%;
   }
 
+.textColor {
+ text-align: center;
+}
+
+::-webkit-input-placeholder { 
+  font-size: 14px;
+  text-align: center;
+}

@@ -8,6 +8,10 @@
  let greenButton = document.getElementById('greenButton')
  let body = document.getElementsByTagName('body')[0]
 
+ let redText = document.getElementById('textRed')
+ let greenText = document.getElementById('textGreen')
+ let blueText = document.getElementById('textBlue')
+
 
 
 
@@ -15,25 +19,19 @@
 
  botao.addEventListener('click', event => {
     event.preventDefault()
-/*     let R, G, B
+    alert(redText.value)
+})
+
+ botaoAleatorio.addEventListener('click', event => {
+    event.preventDefault()
+    let R, G, B
     R = hexadecimal()
     G = hexadecimal()
     B = hexadecimal()
     colorirRed(R)
     colorirGreen(G)
     colorirBlue(B)
-    colorirBody(R, G, B) */
-
-    for(let i = 1; i <= 100; i++){
-        console.log(randomNumber());
-    }
- })
-
- botaoAleatorio.addEventListener('click', event => {
-     event.preventDefault()
-     colorirRed(hexadecimal())
-     colorirBlue(hexadecimal())
-     colorirGreen(hexadecimal())
+    colorirBody(R, G, B) 
  })
 
  redButton.addEventListener('click', event => {
