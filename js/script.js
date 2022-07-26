@@ -1,4 +1,4 @@
- let botao = document.getElementById('botao')
+ let botaoDeTeste = document.getElementById('botao')
  let botaoAleatorio = document.getElementById('allRandom')
  let redCircle = document.getElementById('redCircle')
  let blueCircle = document.getElementById('blueCircle')
@@ -17,123 +17,92 @@
 
  //transformar essas personalizações em funções
 
- botao.addEventListener('click', event => {
-    event.preventDefault()
-    alert(redText.value)
-})
+ botaoDeTeste.addEventListener('click', event => {
+     event.preventDefault()
+     validarCampoVazio()
+ })
 
  botaoAleatorio.addEventListener('click', event => {
-    event.preventDefault()
-    let R, G, B
-    R = hexadecimal()
-    G = hexadecimal()
-    B = hexadecimal()
-    colorirRed(R)
-    colorirGreen(G)
-    colorirBlue(B)
-    colorirBody(R, G, B) 
+     event.preventDefault()
+     redText.value = gerarCor()
+     greenText.value = gerarCor()
+     blueText.value = gerarCor()
+     R = redText.value
+     G = greenText.value
+     B = blueText.value
+     colorirRed(R)
+     colorirGreen(G)
+     colorirBlue(B)
+     colorirBody(R, G, B)
  })
 
  redButton.addEventListener('click', event => {
      event.preventDefault()
-    colorirRed(hexadecimal())
+     let R
+     redText.value = gerarCor()
+     R = redText.value
+     colorirRed(R)
  })
 
  blueButton.addEventListener('click', event => {
-    event.preventDefault()
-    colorirBlue(hexadecimal())
-})
+     event.preventDefault()
+     colorirBlue(gerarCor())
+ })
 
-greenButton.addEventListener('click', event => {
-    event.preventDefault()
-    colorirGreen(hexadecimal())
-})
+ greenButton.addEventListener('click', event => {
+     event.preventDefault()
+     colorirGreen(gerarCor())
+ })
 
- //Hexadecimal = RR GG BB
+ //gerarCor = RR GG BB
 
- let randomNumber = () => { //gera um numero aleatorio de 0 a 15
+ let randomNumber = (param) => { //gera um numero aleatorio de 0 a 15
      let min = Math.ceil(0)
-     let max = Math.floor(16)
+     let max = Math.floor(param + 1)
      return Math.floor(Math.random() * (max - min)) + min;
  }
 
- let convertToHex = (numA, numB) => { //converte numeros decimais de 10 a 15 em seus valores hexadecimais
-
-     switch (numA) {
-         case 10:
-             firstValue = "A"
-             break;
-         case 11:
-             firstValue = "B"
-             break;
-         case 12:
-             firstValue = "C"
-             break;
-         case 13:
-             firstValue = "D"
-             break;
-         case 14:
-             firstValue = "E"
-             break;
-         case 15:
-             firstValue = "F"
-             break;
-         default:
-             firstValue = numA.toString()
-     }
-     switch (numB) {
-         case 10:
-             secondValue = "A"
-             break;
-         case 11:
-             secondValue = "B"
-             break;
-         case 12:
-             secondValue = "C"
-             break;
-         case 13:
-             secondValue = "D"
-             break;
-         case 14:
-             secondValue = "E"
-             break;
-         case 15:
-             secondValue = "F"
-             break;
-         default:
-             secondValue = numB.toString()
-     }
-     return firstValue + secondValue
+ let gerarCor = () => { //returna 2 valores hexadecimais
+     let corAleatoria = ''
+     corAleatoria = corAleatoria + randomNumber(2).toString()
+     corAleatoria = corAleatoria + randomNumber(5).toString()
+     corAleatoria = corAleatoria + randomNumber(5).toString()
+     return corAleatoria
  }
 
- let hexadecimal = () => { //returna 2 valores hexadecimais
-    let randomHex = convertToHex(randomNumber(), randomNumber())
-    return randomHex 
-}
+ let colorirBody = (R, G, B) => { //colore o body
+     let RGB = `rgb(${R}, ${G}, ${B})`
+     console.log(RGB);
+     body.style.backgroundColor = RGB
+ }
 
-let colorirBody = (R, G, B) => {//colore o body
-    let RGB = "#"+R+G+B
-    console.log(RGB);
-    body.style.backgroundColor = RGB
-}
+ let colorirRed = (R) => {
+     let redColor = `rgb(${R},0,0)`
+     redCircle.style.fill = redColor
+     redButton.style.backgroundColor = redColor
+ }
 
-let colorirRed = (R) => {
-    let redHex = "#" + R + "0000"
-    redCircle.style.fill = redHex
-    redButton.style.backgroundColor = redHex
-    console.log("Red color is: " + R);
-}
+ let colorirGreen = (G) => {
+     let greenColor = `rgb(0,${G},0)`
+     greenCircle.style.fill = greenColor
+     greenButton.style.backgroundColor = greenColor
+ }
 
-let colorirGreen = (G) => {
-    let greenHex = "#00" + G + "00"
-    greenCircle.style.fill = greenHex
-    greenButton.style.backgroundColor = greenHex
-    console.log("Green color is: " + G);
-}
+ let colorirBlue = (B) => {
+     let blueColor = `rgb(0,0,${B})`
+     blueCircle.style.fill = blueColor
+     blueButton.style.backgroundColor = blueColor
+ }
 
-let colorirBlue = (B) => {
-    let blueHex = "#0000" + B
-    blueCircle.style.fill = blueHex
-    blueButton.style.backgroundColor = blueHex
-    console.log("Blue color is: " + B);
-}
+ let validarCampoVazio = () => {
+     let campo = document.getElementsByTagName('input')
+ /*     campo.forEach((campo) => {
+         console.log(campo);
+     }) */
+
+/*      for(let i = 0; i<campo.length; i++){
+        console.log(campo[length]);
+     } */
+ }
+
+ //continuar validação amanha
