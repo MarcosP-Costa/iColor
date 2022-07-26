@@ -12,9 +12,6 @@
  let greenText = document.getElementById('textGreen')
  let blueText = document.getElementById('textBlue')
 
-
-
-
  //transformar essas personalizações em funções
 
  botaoDeTeste.addEventListener('click', event => {
@@ -24,6 +21,7 @@
 
  botaoAleatorio.addEventListener('click', event => {
      event.preventDefault()
+     validarCampoVazio()
      redText.value = gerarCor()
      greenText.value = gerarCor()
      blueText.value = gerarCor()
@@ -36,22 +34,69 @@
      colorirBody(R, G, B)
  })
 
+
+ redText.addEventListener('keyup', event => {
+    validarCampoVazio()
+    R = redText.value
+    G = greenText.value
+    B = blueText.value
+    colorirRed(R)
+    colorirBody(R, G, B)
+ })
+
+ greenText.addEventListener('keyup', event => {
+    validarCampoVazio()
+    R = redText.value
+    G = greenText.value
+    B = blueText.value
+    colorirGreen(G)
+    colorirBody(R, G, B)
+ })
+
+ blueText.addEventListener('keyup', event => {
+    validarCampoVazio()
+    R = redText.value
+    G = greenText.value
+    B = blueText.value
+    colorirBlue(B)
+    colorirBody(R, G, B)
+ })
+
+
  redButton.addEventListener('click', event => {
      event.preventDefault()
-     let R
+     let R, G, B
+     validarCampoVazio()
      redText.value = gerarCor()
      R = redText.value
+     G = greenText.value
+     B = blueText.value
      colorirRed(R)
+     colorirBody(R, G, B)
  })
 
  blueButton.addEventListener('click', event => {
      event.preventDefault()
-     colorirBlue(gerarCor())
+     let R, G, B
+     validarCampoVazio()
+     blueText.value = gerarCor()
+     R = redText.value
+     G = greenText.value
+     B = blueText.value
+     colorirBlue(R)
+     colorirBody(R, G, B)
  })
 
  greenButton.addEventListener('click', event => {
      event.preventDefault()
-     colorirGreen(gerarCor())
+     let R, G, B
+     validarCampoVazio()
+     greenText.value = gerarCor()
+     R = redText.value
+     G = greenText.value
+     B = blueText.value
+     colorirBlue(R)
+     colorirBody(R, G, B)
  })
 
  //gerarCor = RR GG BB
@@ -96,13 +141,11 @@
 
  let validarCampoVazio = () => {
      let campo = document.getElementsByTagName('input')
- /*     campo.forEach((campo) => {
-         console.log(campo);
-     }) */
-
-/*      for(let i = 0; i<campo.length; i++){
-        console.log(campo[length]);
-     } */
+      for(let i = 0; i<campo.length; i++){
+        if(!campo[i].value){
+          campo[i].value = 0  
+        }
+     } 
  }
 
  //continuar validação amanha
