@@ -16,7 +16,7 @@
 
  botaoDeTeste.addEventListener('click', event => {
      event.preventDefault()
-     validarCampoVazio()
+     limparCampos()
  })
 
  botaoCopiar.addEventListener('click', event => {
@@ -157,3 +157,17 @@
      navigator.clipboard.writeText(body.style.backgroundColor);
      alert("Copiado com sucesso: " + body.style.backgroundColor);
  }
+
+ let limparCampos = () => {
+    let campo = document.getElementsByTagName('input')
+    for (let i = 0; i < campo.length; i++) {
+        if (campo[i].value) {
+            campo[i].value = 255
+            colorirGreen(255)
+            colorirBlue(255)
+            colorirRed(255)
+            colorirBody(255,255,255)
+            campo[i].value = ""
+        }
+    }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Custom Range Slider | CodingNepal</title>
+    <link rel="stylesheet" href="./css/slider.css">
+</head>
+
+<body>
+    <div class="range">
+        <div class="field">
+            <div class="value left">0</div>
+            <input type="range" min="0" max="255" value="130" steps="1">
+            <div class="value right">255</div>
+        </div>
+    </div>
+    <script>
+        const slideValue = document.querySelector("span");
+        const inputSlider = document.querySelector("input");
+        inputSlider.oninput = (() => {
+            let value = inputSlider.value;
+            inputSlider.style.background = "black"
+            console.log(value);
+        });
+    </script>
+
+</body>
+
+</html>
