@@ -1,4 +1,4 @@
- let botaoDeTeste = document.getElementById('botao')
+ let botaoLimpar = document.getElementById('botao')
  let botaoAleatorio = document.getElementById('allRandom')
  let redCircle = document.getElementById('redCircle')
  let blueCircle = document.getElementById('blueCircle')
@@ -11,10 +11,19 @@
  let redText = document.getElementById('textRed')
  let greenText = document.getElementById('textGreen')
  let blueText = document.getElementById('textBlue')
+ let inputSliderRed = document.getElementById("inputRed");
+ let valueRightRed = document.getElementById("vrRed");
+ let valueLeftRed = document.getElementById("vlRed");
+ let inputSliderGreen = document.getElementById("inputGreen");
+ let valueRightGreen = document.getElementById("vrGreen");
+ let valueLeftGreen = document.getElementById("vlGreen");
+ let inputSliderBlue = document.getElementById("inputBlue");
+ let valueRightBlue = document.getElementById("vrBlue");
+ let valueLeftBlue = document.getElementById("vlBlue");
 
  //transformar essas personalizações em funções
 
- botaoDeTeste.addEventListener('click', event => {
+ botaoLimpar.addEventListener('click', event => {
      event.preventDefault()
      limparCampos()
  })
@@ -32,6 +41,9 @@
      R = redText.value
      G = greenText.value
      B = blueText.value
+     inputSliderRed.value = R
+     inputSliderBlue.value = B
+     inputSliderGreen.value = G
      colorirRed(R)
      colorirGreen(G)
      colorirBlue(B)
@@ -75,6 +87,7 @@
      R = redText.value
      G = greenText.value
      B = blueText.value
+     inputSliderRed.value = R
      colorirRed(R)
      colorirBody(R, G, B)
  })
@@ -87,7 +100,8 @@
      R = redText.value
      G = greenText.value
      B = blueText.value
-     colorirBlue(R)
+     inputSliderBlue.value = B
+     colorirBlue(B)
      colorirBody(R, G, B)
  })
 
@@ -99,7 +113,8 @@
      R = redText.value
      G = greenText.value
      B = blueText.value
-     colorirBlue(R)
+     inputSliderGreen.value = G
+     colorirGreen(G)
      colorirBody(R, G, B)
  })
 
@@ -141,6 +156,7 @@
      let blueColor = `rgb(0,0,${B})`
      blueCircle.style.fill = blueColor
      blueButton.style.backgroundColor = blueColor
+     console.log(blueColor)
  }
 
  let validarCampoVazio = () => {
@@ -159,15 +175,63 @@
  }
 
  let limparCampos = () => {
-    let campo = document.getElementsByTagName('input')
-    for (let i = 0; i < campo.length; i++) {
-        if (campo[i].value) {
-            campo[i].value = 255
-            colorirGreen(255)
-            colorirBlue(255)
-            colorirRed(255)
-            colorirBody(255,255,255)
-            campo[i].value = ""
-        }
-    }
-}
+     let campo = document.getElementsByTagName('input')
+     for (let i = 0; i < campo.length; i++) {
+         if (campo[i].value) {
+             campo[i].value = 255
+             colorirGreen(255)
+             colorirBlue(255)
+             colorirRed(255)
+             colorirBody(255, 255, 255)
+             campo[i].value = ""
+         }
+     }
+ }
+
+ inputSliderGreen.oninput = (() => {
+     let value = inputSliderGreen.value;
+     let greenColor = `rgb(0,${value},0)`
+     let R, G, B
+     inputSliderGreen.style.background = greenColor
+     valueRightGreen.style.color = greenColor
+     valueLeftGreen.style.color = greenColor
+     greenText.value = value
+     validarCampoVazio()
+     R = redText.value
+     G = greenText.value
+     B = blueText.value
+     colorirGreen(G)
+     colorirBody(R, G, B)
+ });
+
+ inputSliderBlue.oninput = (() => {
+     let value = inputSliderBlue.value;
+     let blueColor = `rgb(0,0,${value})`
+     let R, G, B
+     inputSliderBlue.style.background = blueColor
+     valueRightBlue.style.color = blueColor
+     valueLeftBlue.style.color = blueColor
+     blueText.value = value
+     validarCampoVazio()
+     R = redText.value
+     G = greenText.value
+     B = blueText.value
+     colorirBlue(B)
+     colorirBody(R, G, B)
+ });
+
+ inputSliderRed.oninput = (() => {
+     let value = inputSliderRed.value;
+     let redColor = `rgb(${value},0,0)`
+     let R, G, B
+     inputSliderRed.style.background = redColor
+     valueRightRed.style.color = redColor
+     valueLeftRed.style.color = redColor
+     redText.value = value
+     validarCampoVazio()
+     R = redText.value
+     G = greenText.value
+     B = blueText.value
+     colorirRed(R)
+     colorirBody(R, G, B)
+ });
