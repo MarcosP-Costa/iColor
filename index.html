@@ -17,6 +17,7 @@
   <!-- Custom styles for this template -->
   <link href="./css/style.css" rel="stylesheet">
   <link href="./css/slider.css" rel="stylesheet">
+  <link rel="icon" href="./img/icon.png">
 </head>
 
 <body>
@@ -37,9 +38,9 @@
 
           <div class="range">
             <div class="field">
-                <div class="value left">0</div>
-                <input id="inputRed" type="range" min="0" max="255" value="130" steps="1">
-                <div class="value right">255</div>
+                <div class="value left" id="vlRed">0</div>
+                <input id="inputRed" type="range" min="0" max="255" value="0" steps="1">
+                <div class="value right" id="vrRed">255</div>
             </div>
           </div>
 
@@ -60,14 +61,14 @@
 
           <div class="range">
             <div class="field">
-                <div class="value left">0</div>
-                <input id="inputGreen" type="range" min="0" max="255" value="130" steps="1">
-                <div class="value right">255</div>
+                <div class="value left" id="vlGreen">0</div>
+                <input id="inputGreen" type="range" min="0" max="255" value="0" steps="1">
+                <div class="value right" id="vrGreen">255</div>
             </div>
           </div>
 
           <input id="textGreen" class="textColor" type="text" placeholder="Digite um valor de 0 a 255" autofocus>
-          <p><a class="btn btn-secondary" id="greenButton">Random</a></p>
+          <p><a class="btn btn-secondary" id="greenButton">Cor Aleatória</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +80,7 @@
           <div class="range" id="rangeBlue">
             <div class="field">
                 <div class="value left" id="vlBlue">0</div>
-                <input id="inputBlue" type="range" min="0" max="255" value="130" steps="1">
+                <input id="inputBlue" type="range" min="0" max="255" value="0" steps="1">
                 <div class="value right" id="vrBlue">255</div>
             </div>
           </div>
@@ -89,15 +90,9 @@
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
 
-      <p><a class="btn btn-secondary" id="botao">Testar</a></p>
+      <p><a class="btn btn-secondary" id="botao">Limpar Campos</a></p>
       <p><a class="btn btn-secondary" id="allRandom">Tudo Aleatorio</a></p>
       <p><a class="btn btn-secondary" id="copiarCor">Copiar Cor</a></p>
-
-
-
-
-
-
 
       <footer class="container">
         <p>&copy; Marcos P-Costa Dev &middot;</p>
