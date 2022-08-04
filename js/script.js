@@ -120,7 +120,7 @@
 
  //gerarCor = RR GG BB
 
- let randomNumber = (param) => { //gera um numero aleatorio de 0 a 15
+ let randomNumber = (param) => {
      let min = Math.ceil(0)
      let max = Math.floor(param + 1)
      return Math.floor(Math.random() * (max - min)) + min;
