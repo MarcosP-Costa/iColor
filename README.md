@@ -2,6 +2,7 @@
 # Projeto iColor
 
 A ideia é criar um site para treinar a manipulação do **DOM** *(Document Object Model)* onde o usuario pode modificar os valores das cores primarias RGB, e o fundo mudar automaticamente com a junção das cores.
+- [Link](https://marcosp-costa.github.io/iColor/)
 
 
 ## Referência
