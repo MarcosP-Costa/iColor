@@ -29,7 +29,9 @@
  })
 
  botaoCopiar.addEventListener('click', event => {
+    event.preventDefault()
      funcaoCopiarRGB()
+     
  })
 
  botaoAleatorio.addEventListener('click', event => {
@@ -156,7 +158,7 @@
      let blueColor = `rgb(0,0,${B})`
      blueCircle.style.fill = blueColor
      blueButton.style.backgroundColor = blueColor
-     console.log(blueColor)
+     
  }
 
  let validarCampoVazio = () => {
@@ -170,9 +172,18 @@
 
 
  let funcaoCopiarRGB = () => {
-     navigator.clipboard.writeText(body.style.backgroundColor);
-     alert("Copiado com sucesso: " + body.style.backgroundColor);
- }
+    const textToCopy = body.style.backgroundColor || getComputedStyle(body).backgroundColor;
+
+    navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+            alert("Copiado com sucesso: " + textToCopy);
+        })
+        .catch((error) => {
+            console.error("Erro ao copiar para a área de transferência:", error);
+            alert("Erro ao copiar para a área de transferência. Tente novamente.");
+        });
+}
+
 
  let limparCampos = () => {
      let campo = document.getElementsByTagName('input')
